@@ -13,7 +13,7 @@ router.get('/api/wechat', function(req, res, next) {
   params.sort();
   const str = params.join('');
   const hash = crypto.createHash('sha1');
-  const sign = hash.update(str.digest('hex'));
+  const sign = hash.update(str).digest('hex');
 
   if(sign === signature) {
     res.send(echostr);
